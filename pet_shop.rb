@@ -64,7 +64,8 @@ def customer_can_afford_pet(customer, new_pet)
 end
 
 def sell_pet_to_customer(shop, pet, customer)
-  if pet == nil
+  case pet
+  when nil
     return nil
   else 
     if customer_can_afford_pet(customer, pet) == true
