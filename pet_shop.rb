@@ -64,15 +64,11 @@ def customer_can_afford_pet(customer, new_pet)
 end
 
 def sell_pet_to_customer(shop, pet, customer)
-  case pet
-  when nil
-    return nil
+  if pet != nil && customer_can_afford_pet(customer, pet) == true
+    add_pet_to_customer(customer, pet)
+    increase_pets_sold(shop, 1)
+    add_or_remove_cash(shop, pet[:price])
   else 
-    if customer_can_afford_pet(customer, pet) == true
-      add_pet_to_customer(customer, pet)
-      increase_pets_sold(shop, 1)
-      add_or_remove_cash(shop, pet[:price])
-    end
+    return nil
   end
 end
-
